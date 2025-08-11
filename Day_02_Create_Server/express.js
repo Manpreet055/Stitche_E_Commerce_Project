@@ -13,7 +13,7 @@ app.get("/about",(req,res)=>{
 })
 
 app.post("/login",(req,res)=>{
-    app
+    res.send("You are at login page..")
 })
 
 app.listen("9000")
