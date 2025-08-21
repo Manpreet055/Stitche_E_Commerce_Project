@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+body{
+    background-color: #f0f0f0;
+}
+
+input {
+    @apply border-b-1 focus:outline-gray-400 w-[40%] border-gray-400 text-xl p-2 ;  
+}
