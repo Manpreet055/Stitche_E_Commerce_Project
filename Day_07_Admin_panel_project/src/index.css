@@ -1,9 +1,32 @@
 @import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
 
 body{
     background-color: #f0f0f0;
+      font-family: 'Poppins', sans-serif;
+
 }
 
-input {
-    @apply border-b-1 focus:outline-gray-400 w-[40%] border-gray-400 text-xl p-2 ;  
+.button-style{
+    @apply bg-blue-600 hover:shadow-lg px-6 py-3 h-full  rounded-2xl text-white  font-medium hover:scale-[1.03] will-change-transform transition-all mb-4  duration-300 ease-in-out 
+}
+.scrollbar-hidden{
+    scrollbar-width: none;
+}
+
+.title{
+    @apply text-xl w-full font-medium mb-3 
+}
+
+
+.input-section{
+    @apply p-6  border border-neutral-200 shadow-lg rounded-2xl flex gap-3 flex-col
+}
+input,textarea,select{
+    @apply border border-gray-300 py-2 rounded-lg bg-blue-200/20 text-lg px-4 focus:outline-gray-400   ;  
+}
+
+label{
+    @apply tracking-wide text-gray-600
 }
