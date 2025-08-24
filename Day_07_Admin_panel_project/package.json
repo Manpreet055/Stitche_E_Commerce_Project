@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
+    "dompurify": "^3.2.6",
     "flowbite-react": "^0.12.7",
+    "framer-motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-hook-form": "^7.62.0",
     "react-icons": "^5.5.0",
     "tailwindcss": "^4.1.12"
   },

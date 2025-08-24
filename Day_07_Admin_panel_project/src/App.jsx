@@ -1,14 +1,14 @@
 import { useState } from "react";
 import "./index.css";
-import Form from "./Components/Form";
 import SideBar from "./Components/sidebar";
+import Form from "./Components/Form/Form";
 function App() {
   return (
     <div>
-    {/* <div className="flex w-full ">
+      <div className="flex w-full ">
         <SideBar />
-    </div> */}
-      <Form />
+        <Form></Form>
+      </div>
     </div>
   );
 }
