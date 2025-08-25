@@ -4,9 +4,12 @@ import KeyFeature from "./keyFeature";
 import { useState } from "react";
 
 const Form = () => {
+  // These States store all the keyfeatures,images and thumnails in the form of Array
   let [feature, setNewFeatures] = useState([]);
   const [images, setimages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
+
+  // Using react-hook-form library to handle the form these are the dependencies for handling form
   const {
     register,
     handleSubmit,
@@ -15,21 +18,15 @@ const Form = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  let handlefeatureChange = (feat) => {
-    setNewFeatures(feat);
-    setValue("KeyFeatures", feat);
-  };
-  let handleimages = (image) => {
-    setimages(image);
-    setValue("images", image);
-  };
-  let handleThumbnails = (thumbnail) => {
-    setThumbnails(thumbnail);
-    setValue("thumbnails", thumbnail);
-  };
+  //  This function handle all uploads of thumnails,images and features and updated the states
+  function handleFormArrayChange(setter, fieldName, value) {
+    setter(value); // This parameter set the value according the  given setter
+    setValue(fieldName, value); // this will update the form information with the new information
+  }
 
-  let discount = watch("discount");
+  let discount = watch("discount"); // The watch function watch the updates of discoubt
 
+  // This is The function where we gonna create our logic for sending data to the backend or anything else we want to do with the form data
   let onsubmit = (data) => {
     console.log(data);
   };
@@ -44,27 +41,41 @@ const Form = () => {
       >
         {/* This is the first container which includes fields like title,description,price,Inventory etc. */}
         <div className="flex-col gap-6 flex max-w-3xl">
-          {/* This is the Genral Infomation Section which contains product title and description */}
+          {/* This is the Genral Infomation Section which contains title and description,keyfeatures of the prodict .. */}
           <div className="input-section">
             <h3 className="title">General Information</h3>
             <label htmlFor="title">Product Name</label>
             <input
               type="text"
-              {...register("title", { required: true })}
+              {...register("title", {
+                required: "title is required",
+                minLength: { value: 4, message: "Minimum length shold be 4" },
+              })}
               id="title"
               placeholder="Enter Product Name"
             />
-            {errors.title && <p role="alert">{errors.title.message}</p>}
 
             <label htmlFor="description">Description</label>
             <textarea
-              {...register("description", { required: true })}
+              {...register("description", {
+                required: "Description id required",
+                minLength: {
+                  value: 10,
+                  message: "Minimum length should be 10",
+                },
+              })}
               placeholder="Description"
               name="description"
               id="description"
               className="scrollbar-hidden h-[150px] resize-y"
             ></textarea>
-            <KeyFeature onFeatureChange={handlefeatureChange} />
+
+            {/* Using the Keyfeature component and acessing its props.value */}
+            <KeyFeature
+              onFeatureChange={(data) =>
+                handleFormArrayChange(setNewFeatures, "keyfeatures", data)
+              }
+            />
           </div>
 
           {/* This is Pricing Section where Price and Discount input-Field is Located */}
@@ -74,22 +85,39 @@ const Form = () => {
             <div className="flex items-center gap-4 w-full">
               <span className=" text-lg text-gray-500">Dhs.</span>
               <input
-                type="text"
-                {...register("price", { required: true })}
+                type="number"
+                {...register("price", {
+                  required: true,
+                  valueAsNumber: true,
+                  min: {
+                    value: 1,
+                    message: "Minimum price should be 1",
+                  },
+                  max: {
+                    value: 9999,
+                    message: "Maximum price will be 9999",
+                  },
+                })}
                 className="w-full"
                 placeholder="Price"
               />
             </div>
+
             <div className=" flex justify-evenly gap-6">
               <div className="w-full">
                 <label htmlFor="discount">Discount</label>
                 <input
-                  type="text"
-                  {...register("discount", { required: true })}
+                  type="number"
+                  {...register("discount", {
+                    required: true,
+                    valueAsNumber: true,
+                  })}
                   id="discount"
                   className="mt-2"
                 />
               </div>
+
+              {/* Discount-type input-field */}
               <div className="w-full flex flex-col justify-center">
                 <label htmlFor="discount-type" className="mb-2">
                   Discount Type
@@ -97,20 +125,22 @@ const Form = () => {
                 <select
                   className="text-gray-500"
                   id="discount-type"
-                  {...register("discount-type", { required: true })}
+                  {...register("discount-type", {
+                    required: true,
+                  })}
                 >
                   <option value="percentage">Percentage</option>
                   <option value="amount">Amount</option>
                   <option value="bundle-discount">Bundle Discount</option>
-                  <option value={`Buy One Get ${discount}`}>
-                    Buy One Get {discount}
+                  <option value={`Buy One Get ${discount ? discount : 1}`}>
+                    Buy One Get {discount ? discount : 1}
                   </option>
                 </select>
               </div>
             </div>
           </div>
 
-          {/* This is the inventory section which has input fields like SKU,Barcode,Quantity */}
+          {/* This is the inventory section which has input fields like Barcode,Quantity */}
           <div className="input-section ">
             <h3 className="title">Inventory</h3>
 
@@ -121,7 +151,18 @@ const Form = () => {
                   Barcode
                 </label>
                 <input
-                  {...register("barcode", { required: true })}
+                  {...register("barcode", {
+                    required: true,
+                    valueAsNumber: true,
+                    minLength: {
+                      value: 1,
+                      message: "Minimum length should be 6",
+                    },
+                    maxLength: {
+                      value: 6,
+                      message: "Barcode Should not be exceed from length 6",
+                    },
+                  })}
                   type="number"
                   id="barcode"
                   placeholder="Type product Barcode"
@@ -134,7 +175,10 @@ const Form = () => {
                 <input
                   type="number"
                   id="quantity"
-                  {...register("quantity", { required: true })}
+                  {...register("quantity", {
+                    required: true,
+                    valueAsNumber: true,
+                  })}
                   placeholder="Type Produtc Quantity"
                 />
               </div>
@@ -144,7 +188,12 @@ const Form = () => {
 
         {/* This is a second Container which contains Input Fields Like Image Uploadings */}
         <div className=" w-full gap-6 max-w-xl flex flex-col">
-          <Images imgs={handleimages} thumbnails={handleThumbnails} />
+          <Images
+            imgs={(data) => handleFormArrayChange(setimages, "images", data)}
+            thumbnails={(data) =>
+              handleFormArrayChange(setThumbnails, "thumbnails", data)
+            }
+          />
 
           {/* Category Selection section */}
           <div className="input-section">
@@ -153,7 +202,9 @@ const Form = () => {
             <select
               name="category"
               className="text-gray-500"
-              {...register("category", { required: true })}
+              {...register("category", {
+                required: true,
+              })}
               id="category"
             >
               <option value="printer">Printer</option>

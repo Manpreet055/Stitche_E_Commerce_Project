@@ -4,27 +4,21 @@ const Images = ({ imgs, thumbnails }) => {
   // Handle Images Upload
   let [imageArr, setImageArr] = useState([]);
   let [images, setimages] = useState([]);
-  let getImages = (event) => {
-    let newFile = event.target.files[0];
-    if (newFile) {
-      setimages([...images, URL.createObjectURL(newFile)]);
-      const updatedArr = [...imageArr, newFile];
-      setImageArr(updatedArr);
-      imgs(updatedArr);
-    }
-  };
-  //   Handle thumbnail Upload
+
   let [thumbnailArr, setthumbnailArr] = useState([]);
   let [thumbnail, setThumbnails] = useState([]);
-  let getThumbnails = (event) => {
+
+  // This Single function handles everythings including images and thumbnail's preview, sending files to the form using props , updating the value etc.
+  let getFiles = (event, state, array, setState, setArr, setProp) => {
     let newFile = event.target.files[0];
     if (newFile) {
-      setThumbnails([...thumbnail, URL.createObjectURL(newFile)]);
-      const updatedArr = [...thumbnailArr, newFile];
-      setthumbnailArr(updatedArr);
-      thumbnails(updatedArr);
+      setState([...state, URL.createObjectURL(newFile)]);
+      const updatedArr = [...array, newFile];
+      setArr(updatedArr);
+      setProp(updatedArr);
     }
   };
+
   return (
     <div className="flex flex-col gap-4">
       <div className="input-section  items-center">
@@ -48,7 +42,9 @@ const Images = ({ imgs, thumbnails }) => {
           Add images{" "}
         </label>
         <input
-          onChange={getImages}
+          onChange={(event) => {
+            getFiles(event, images, imageArr, setimages, setImageArr, imgs);
+          }}
           id="images"
           type="file"
           accept="image/*"
@@ -76,7 +72,16 @@ const Images = ({ imgs, thumbnails }) => {
           Add Thumbnail{" "}
         </label>
         <input
-          onChange={getThumbnails}
+          onChange={(event) => {
+            getFiles(
+              event,
+              thumbnail,
+              thumbnailArr,
+              setThumbnails,
+              setthumbnailArr,
+              thumbnails
+            );
+          }}
           id="thumbnails"
           type="file"
           accept="image/png"
