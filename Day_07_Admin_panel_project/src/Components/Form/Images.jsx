@@ -2,15 +2,15 @@ import React, { useState } from "react";
 
 const Images = ({ imgs, thumbnails }) => {
   // Handle Images Upload
-  let [imageArr, setImageArr] = useState([]);
-  let [images, setimages] = useState([]);
+  const [imageArr, setImageArr] = useState([]);
+  const [images, setimages] = useState([]);
 
-  let [thumbnailArr, setthumbnailArr] = useState([]);
-  let [thumbnail, setThumbnails] = useState([]);
+  const [thumbnailArr, setthumbnailArr] = useState([]);
+  const [thumbnail, setThumbnails] = useState([]);
 
   // This Single function handles everythings including images and thumbnail's preview, sending files to the form using props , updating the value etc.
-  let getFiles = (event, state, array, setState, setArr, setProp) => {
-    let newFile = event.target.files[0];
+  const getFiles = (event, state, array, setState, setArr, setProp) => {
+    const newFile = event.target.files[0];
     if (newFile) {
       setState([...state, URL.createObjectURL(newFile)]);
       const updatedArr = [...array, newFile];

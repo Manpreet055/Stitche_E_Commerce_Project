@@ -6,15 +6,15 @@ const KeyFeature = ({ onFeatureChange }) => {
 
   // This function handle the new State and add it to the exiting state.
   const handleChanges = (index, value) => {
-    let updateValue = [...keyFeatures]; // used spread operator to spread all the element of "KeyFeatures" state
+    const updateValue = [...keyFeatures]; // used spread operator to spread all the element of "KeyFeatures" state
     updateValue[index] = value; // update the value according to the given index param
     addNewKeyFeatures(updateValue); // update the state with updated array
     onFeatureChange(updateValue); //send back the updated array element to the props which will be later used in form of Form.jsx
   };
 
   // This function will basically filter out the clicked element from the array and state
-  let removeFeature = (index) => {
-    let updatedArray = keyFeatures.filter((_, i) => i != index);
+  const removeFeature = (index) => {
+    const updatedArray = keyFeatures.filter((_, i) => i != index);
     addNewKeyFeatures(updatedArray);
   };
 
@@ -39,7 +39,7 @@ const KeyFeature = ({ onFeatureChange }) => {
             <input
               className="w-full pl-3"
               value={feature}
-              placeholder="KeyFeautre"
+              placeholder="Key Feautre"
               onChange={(event) => handleChanges(index, event.target.value)}
               type="text"
             />

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Form = () => {
   // These States store all the keyfeatures,images and thumnails in the form of Array
-  let [feature, setNewFeatures] = useState([]);
+  const [feature, setNewFeatures] = useState([]);
   const [images, setimages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
 
@@ -18,21 +18,33 @@ const Form = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  //Reset form function
+  const resetFrom = () => {
+    if (!isSubmitting) {
+      return;
+    }
+    setNewFeatures([]);
+    setimages([]);
+    setThumbnails([]);
+  };
   //  This function handle all uploads of thumnails,images and features and updated the states
   function handleFormArrayChange(setter, fieldName, value) {
     setter(value); // This parameter set the value according the  given setter
     setValue(fieldName, value); // this will update the form information with the new information
   }
 
-  let discount = watch("discount"); // The watch function watch the updates of discoubt
+  const discount = watch("discount"); // The watch function watch the updates of discoubt
 
   // This is The function where we gonna create our logic for sending data to the backend or anything else we want to do with the form data
-  let onsubmit = (data) => {
+  const onsubmit = (data) => {
     console.log(data);
   };
 
   return (
     <div className="w-full">
+      <h2 className="flex w-full py-8 justify-center text-3xl font-semibold">
+        Add New Product
+      </h2>
       <form
         action=""
         method="POST"
@@ -48,17 +60,24 @@ const Form = () => {
             <input
               type="text"
               {...register("title", {
-                required: "title is required",
-                minLength: { value: 4, message: "Minimum length shold be 4" },
+                required: "Title is required",
+                minLength: { value: 4, message: "Minimum length should be 4" },
               })}
+              className={`${
+                errors.title
+                  ? "border border-red-500 focus:outline-red-500"
+                  : "border border-gray-300 focus:outline-gray-500"
+              }`}
               id="title"
               placeholder="Enter Product Name"
             />
-
+            {errors.title && (
+              <p className="text-red-500">*{errors.title.message}</p>
+            )}
             <label htmlFor="description">Description</label>
             <textarea
               {...register("description", {
-                required: "Description id required",
+                required: "Description is required",
                 minLength: {
                   value: 10,
                   message: "Minimum length should be 10",
@@ -67,8 +86,15 @@ const Form = () => {
               placeholder="Description"
               name="description"
               id="description"
-              className="scrollbar-hidden h-[150px] resize-y"
+              className={`scrollbar-hidden h-[150px] resize-y ${
+                errors.description
+                  ? "border border-red-500 focus:outline-red-500"
+                  : "border border-gray-300 focus:outline-gray-500"
+              }`}
             ></textarea>
+            {errors.description && (
+              <p className="text-red-500">*{errors.description.message}</p>
+            )}
 
             {/* Using the Keyfeature component and acessing its props.value */}
             <KeyFeature
@@ -82,38 +108,47 @@ const Form = () => {
           <div className="input-section">
             <h3 className="title">Pricing</h3>
             <label htmlFor="base-price">Base Price</label>
-            <div className="flex items-center gap-4 w-full">
-              <span className=" text-lg text-gray-500">Dhs.</span>
-              <input
-                type="number"
-                {...register("price", {
-                  required: true,
-                  valueAsNumber: true,
-                  min: {
-                    value: 1,
-                    message: "Minimum price should be 1",
-                  },
-                  max: {
-                    value: 9999,
-                    message: "Maximum price will be 9999",
-                  },
-                })}
-                className="w-full"
-                placeholder="Price"
-              />
-            </div>
+            <input
+              type="number"
+              {...register("price", {
+                required: "Price is required",
+                valueAsNumber: true,
+                min: {
+                  value: 1,
+                  message: "Minimum price should be 1",
+                },
+                max: {
+                  value: 9999,
+                  message: "Maximum price will be 9999",
+                },
+              })}
+              className={`w-full ${
+                errors.price
+                  ? "border border-red-500 focus:outline-red-500"
+                  : "border border-gray-300 focus:outline-gray-500"
+              }`}
+              placeholder="Price"
+            />
+            {errors.price && (
+              <p className="text-red-500">*{errors.price.message}</p>
+            )}
 
             <div className=" flex justify-evenly gap-6">
               <div className="w-full">
-                <label htmlFor="discount">Discount</label>
+                <label htmlFor="discount">
+                  Discount <i>(Optional)</i>
+                </label>
                 <input
                   type="number"
                   {...register("discount", {
-                    required: true,
-                    valueAsNumber: true,
+                    valueAsNumber: "Please enter an number ",
                   })}
                   id="discount"
-                  className="mt-2"
+                  className={`mt-2 ${
+                    errors.discount
+                      ? "border border-red-500 focus:outline-red-500"
+                      : "border border-gray-300 focus:outline-gray-500"
+                  }`}
                 />
               </div>
 
@@ -129,6 +164,7 @@ const Form = () => {
                     required: true,
                   })}
                 >
+                  <option value="no-offers">No Discount</option>
                   <option value="percentage">Percentage</option>
                   <option value="amount">Amount</option>
                   <option value="bundle-discount">Bundle Discount</option>
@@ -152,21 +188,25 @@ const Form = () => {
                 </label>
                 <input
                   {...register("barcode", {
-                    required: true,
-                    valueAsNumber: true,
-                    minLength: {
-                      value: 1,
-                      message: "Minimum length should be 6",
-                    },
-                    maxLength: {
-                      value: 6,
-                      message: "Barcode Should not be exceed from length 6",
+                    required: "Barcode is required",
+                    valueAsNumber: "Please enter a number",
+                    pattern: {
+                      value: /^\d{6}$/,
+                      message: "Barcode must be atleast 6 digits",
                     },
                   })}
+                  className={`${
+                    errors.barcode
+                      ? "border border-red-500 focus:outline-red-500"
+                      : "border border-gray-300 focus:outline-gray-500"
+                  }`}
                   type="number"
                   id="barcode"
                   placeholder="Type product Barcode"
                 />
+                {errors.barcode && (
+                  <p className="text-red-500">*{errors.barcode.message}</p>
+                )}
               </div>
               <div className="flex flex-col">
                 <label htmlFor="quantity" className="mb-2">
@@ -176,11 +216,19 @@ const Form = () => {
                   type="number"
                   id="quantity"
                   {...register("quantity", {
-                    required: true,
                     valueAsNumber: true,
                   })}
+                  defaultValue="0"
+                  className={`${
+                    errors.quantity
+                      ? "border border-red-500 focus:outline-red-500"
+                      : "border border-gray-300 focus:outline-gray-500"
+                  }`}
                   placeholder="Type Produtc Quantity"
                 />
+                {errors.quantity && (
+                  <p className="text-red-500">*{errors.quantity.message}</p>
+                )}
               </div>
             </div>
           </div>
@@ -220,12 +268,19 @@ const Form = () => {
 
           {/* Clear and submit button */}
           <div className="flex gap-2 justify-end px-4">
-            <button className="button-style scale-transition" type="reset">
+            <button
+              className="button-style scale-transition"
+              onClick={resetFrom}
+              type="reset"
+            >
               Clear All
             </button>
             <input
               disabled={isSubmitting}
-              className="button-style scale-transition"
+              onClick={resetFrom}
+              className={`button-style scale-transition ${
+                isSubmitting && "opacity-50"
+              }`}
               type="submit"
               value={isSubmitting ? "Adding product " : "Add Product"}
             />

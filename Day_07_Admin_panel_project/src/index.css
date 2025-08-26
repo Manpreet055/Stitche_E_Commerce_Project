@@ -27,7 +27,7 @@ body{
     @apply p-6  border border-neutral-200 shadow-lg rounded-2xl flex gap-3 flex-col
 }
 input,textarea,select{
-    @apply border border-gray-300 py-2 rounded-lg bg-blue-200/20 text-lg pl-2 focus:outline-gray-400   ;  
+    @apply  py-2 rounded-lg bg-blue-200/20 text-lg pl-2  ;  
 }
 
 label{
