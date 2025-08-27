@@ -22,6 +22,9 @@ body{
     @apply text-xl w-full font-medium mb-3 
 }
 
+.sidebar-links {
+    @apply flex gap-2 items-center hover:bg-gray-300 py-3 rounded-xl px-3
+}
 
 .input-section{
     @apply p-6  border border-neutral-200 shadow-lg rounded-2xl flex gap-3 flex-col

@@ -1,13 +1,12 @@
-import { useState } from "react";
 import "./index.css";
 import SideBar from "./Components/sidebar";
-import Form from "./Components/Form/Form";
+import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div>
       <div className="flex w-full ">
         <SideBar />
-        <Form></Form>
+        <Outlet></Outlet>
       </div>
     </div>
   );

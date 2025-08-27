@@ -41,7 +41,7 @@ const Form = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full ml-80 flex-1 overflow-x-hidden">
       <h2 className="flex w-full py-8 justify-center text-3xl font-semibold">
         Add New Product
       </h2>
