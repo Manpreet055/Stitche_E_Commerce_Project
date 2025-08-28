@@ -1,21 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import ProductDropdown from "./ProductDropdown";
+import { Menu, X } from "lucide-react";
 import {
   House,
   User,
-  ShoppingBag,
   Truck,
   Cog,
-  ChartLine,
-  ChartBarStacked,
   Users,
   Power,
   UserPen,
+  Mail,
 } from "lucide-react";
 
-const sidebar = () => {
+const Sidebar = () => {
   return (
-    <div className="flex flex-col justify-between h-screen w-80 top-0 left-0 fixed border border-black">
+    <div
+      className={`lg:flex hidden  z-20 bg-[#f0f0f0] flex-col justify-between h-screen w-72 md:w-80  top-0 left-0 fixed border border-neutral-300`}
+    >
       <div>
         <div className="flex py-6 px-4 items-center gap-3 text-3xl font-medium">
           <span className="p-3 bg-gray-300 rounded-full">
@@ -45,11 +47,15 @@ const sidebar = () => {
                   isActive ? "bg-gray-300" : ""
                 }`;
               }}
-              to="/products"
+              to="/inbox"
             >
-              <ShoppingBag />
-              Products
+              <Mail />
+              Inbox
             </NavLink>
+          </li>
+
+          <li>
+            <ProductDropdown />
           </li>
 
           <li>
@@ -76,35 +82,7 @@ const sidebar = () => {
               to="/customers"
             >
               <Users />
-              Customers
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              className={({ isActive }) => {
-                return ` w-full flex sidebar-links   ${
-                  isActive ? "bg-gray-300" : ""
-                }`;
-              }}
-              to="/categories"
-            >
-              <ChartBarStacked />
-              Categories
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              className={({ isActive }) => {
-                return ` w-full flex sidebar-links   ${
-                  isActive ? "bg-gray-300" : ""
-                }`;
-              }}
-              to="/analytics"
-            >
-              <ChartLine />
-              Analytics
+              Users
             </NavLink>
           </li>
 
@@ -133,8 +111,9 @@ const sidebar = () => {
             }}
             to="/settings"
           >
-            <UserPen/>
-            Profile</NavLink>
+            <UserPen />
+            Profile
+          </NavLink>
         </li>
         <li>
           <NavLink
@@ -154,4 +133,4 @@ const sidebar = () => {
   );
 };
 
-export default sidebar;
+export default Sidebar;
