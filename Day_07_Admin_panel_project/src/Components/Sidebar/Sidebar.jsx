@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import ProductDropdown from "./ProductDropdown";
-import { Menu, X } from "lucide-react";
 import {
   House,
   User,
@@ -16,7 +15,7 @@ import {
 const Sidebar = () => {
   return (
     <div
-      className={`lg:flex hidden  z-20 bg-[#f0f0f0] flex-col justify-between h-screen w-72 md:w-80  top-0 left-0 fixed border border-neutral-300`}
+      className={`sidebar flex z-50 bg-[#f0f0f0] flex-col justify-between h-screen w-72 md:w-80 top-0 left-0 fixed border border-neutral-300`}
     >
       <div>
         <div className="flex py-6 px-4 items-center gap-3 text-3xl font-medium">

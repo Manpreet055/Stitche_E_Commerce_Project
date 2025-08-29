@@ -52,7 +52,7 @@ const Form = () => {
         className=" rounded-3xl flex gap-y-6 justify-evenly h-full flex-wrap w-full p-6 bg-[#f8f8f8]"
       >
         {/* This is the first container which includes fields like title,description,price,Inventory etc. */}
-        <div className="flex-col gap-6 flex max-w-3xl">
+        <div className="flex-col gap-6 flex max-w-2xl">
           {/* This is the Genral Infomation Section which contains title and description,keyfeatures of the prodict .. */}
           <div className="input-section">
             <h3 className="title">General Information</h3>
@@ -122,7 +122,7 @@ const Form = () => {
                   message: "Maximum price will be 9999",
                 },
               })}
-              className={`w-full ${
+              className={`${
                 errors.price
                   ? "border border-red-500 focus:outline-red-500"
                   : "border border-gray-300 focus:outline-gray-500"
@@ -133,8 +133,8 @@ const Form = () => {
               <p className="text-red-500">*{errors.price.message}</p>
             )}
 
-            <div className=" flex justify-evenly gap-6">
-              <div className="w-full">
+            <div className=" flex flex-col  justify-evenly gap-6">
+              <div className="flex flex-col ">
                 <label htmlFor="discount">
                   Discount <i>(Optional)</i>
                 </label>
@@ -153,7 +153,7 @@ const Form = () => {
               </div>
 
               {/* Discount-type input-field */}
-              <div className="w-full flex flex-col justify-center">
+              <div className=" flex flex-col justify-center">
                 <label htmlFor="discount-type" className="mb-2">
                   Discount Type
                 </label>
@@ -181,8 +181,8 @@ const Form = () => {
             <h3 className="title">Inventory</h3>
 
             {/*Input fields  */}
-            <div className="flex justify-evenly gap-4">
-              <div className="flex flex-col">
+            <div className="flex flex-wrap justify-evenly gap-4">
+              <div className="flex flex-col w-full max-w-lg">
                 <label htmlFor="barcode" className="mb-2">
                   Barcode
                 </label>
@@ -208,7 +208,7 @@ const Form = () => {
                   <p className="text-red-500">*{errors.barcode.message}</p>
                 )}
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col w-full max-w-lg">
                 <label htmlFor="quantity" className="mb-2">
                   Quantity
                 </label>
@@ -235,7 +235,7 @@ const Form = () => {
         </div>
 
         {/* This is a second Container which contains Input Fields Like Image Uploadings */}
-        <div className=" w-full gap-6 max-w-xl flex flex-col">
+        <div className="w-full  gap-6 max-w-2xl flex flex-col">
           <Images
             imgs={(data) => handleFormArrayChange(setimages, "images", data)}
             thumbnails={(data) =>
