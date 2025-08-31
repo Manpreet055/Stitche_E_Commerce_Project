@@ -28,7 +28,7 @@ const Images = ({ imgs, thumbnails }) => {
         <div className="w-full gap-4 flex flex-wrap  p-4">
           {images.map((file, index) => (
             <div
-              className="border border-gray-300 w-fit max-w-[150px] rounded"
+              className="border border-gray-300 w-fit max-w-[90px] max-h-[90px] lg:max-h-[150px]  lg:max-w-[150px]"
               key={index}
             >
               <img src={file} className="w-full h-full" alt="" />
@@ -58,7 +58,7 @@ const Images = ({ imgs, thumbnails }) => {
         <div className="w-full gap-4 flex flex-wrap  p-4">
           {thumbnail.map((file, index) => (
             <div
-              className="border border-gray-300 w-fit max-w-[150px] rounded"
+              className="border border-gray-300 w-fit max-w-[90px] max-h-[90px] lg:max-h-[150px]  lg:max-w-[150px]"
               key={index}
             >
               <img src={file} className="w-full h-full" alt="" />

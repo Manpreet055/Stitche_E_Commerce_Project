@@ -15,7 +15,7 @@ import {
 const Sidebar = () => {
   return (
     <div
-      className={`sidebar flex z-50 bg-[#f0f0f0] flex-col justify-between h-screen w-72 md:w-80 top-0 left-0 fixed border border-neutral-300`}
+      className={`sidebar flex z-50   flex-col justify-between h-full w-72 max-w-[80vw] md:w-80 top-0 left-0 fixed border-r-1 border-neutral-300`}
     >
       <div>
         <div className="flex py-6 px-4 items-center gap-3 text-3xl font-medium">
@@ -28,8 +28,8 @@ const Sidebar = () => {
           <li>
             <NavLink
               className={({ isActive }) => {
-                return ` w-full flex sidebar-links   ${
-                  isActive ? "bg-gray-300" : ""
+                return `w-full flex sidebar-links    ${
+                  isActive ? "text-blue-500" : ""
                 }`;
               }}
               to="/"
@@ -43,7 +43,7 @@ const Sidebar = () => {
             <NavLink
               className={({ isActive }) => {
                 return ` w-full flex sidebar-links   ${
-                  isActive ? "bg-gray-300" : ""
+                  isActive ? "text-blue-500" : ""
                 }`;
               }}
               to="/inbox"
@@ -61,7 +61,7 @@ const Sidebar = () => {
             <NavLink
               className={({ isActive }) => {
                 return ` w-full flex sidebar-links   ${
-                  isActive ? "bg-gray-300" : ""
+                  isActive ? "text-blue-500" : ""
                 }`;
               }}
               to="/orders"
@@ -75,7 +75,7 @@ const Sidebar = () => {
             <NavLink
               className={({ isActive }) => {
                 return ` w-full flex sidebar-links   ${
-                  isActive ? "bg-gray-300" : ""
+                  isActive ? "text-blue-500" : ""
                 }`;
               }}
               to="/customers"
@@ -89,7 +89,7 @@ const Sidebar = () => {
             <NavLink
               className={({ isActive }) => {
                 return ` w-full flex sidebar-links   ${
-                  isActive ? "bg-gray-300" : ""
+                  isActive ? "text-blue-500" : ""
                 }`;
               }}
               to="/settings"
@@ -105,10 +105,10 @@ const Sidebar = () => {
           <NavLink
             className={({ isActive }) => {
               return ` w-full flex sidebar-links   ${
-                isActive ? "bg-gray-300" : ""
+                isActive ? "text-blue-500" : ""
               }`;
             }}
-            to="/settings"
+            to="/profile"
           >
             <UserPen />
             Profile
@@ -118,10 +118,10 @@ const Sidebar = () => {
           <NavLink
             className={({ isActive }) => {
               return ` w-full flex sidebar-links   ${
-                isActive ? "bg-gray-300" : ""
+                isActive ? "text-blue-500" : ""
               }`;
             }}
-            to="/settings"
+            to="/logout"
           >
             <Power />
             Logout

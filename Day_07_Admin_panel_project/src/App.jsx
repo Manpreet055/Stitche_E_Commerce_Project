@@ -7,7 +7,7 @@ function App() {
     <div>
       <div className="flex w-full ">
         <MainMenu />
-        <main className={`w-full mt-12 lg:mt-0 lg:ml-80 pl-5`}>
+        <main className={`scrollbar-hidden w-full mt-10 lg:mt-0 lg:ml-80 px-2 lg:pl-5`}>
           <Outlet></Outlet>
         </main>
       </div>

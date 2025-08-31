@@ -49,10 +49,10 @@ const Form = () => {
         action=""
         method="POST"
         onSubmit={handleSubmit(onsubmit)}
-        className=" rounded-3xl flex gap-y-6 justify-evenly h-full flex-wrap w-full p-6 bg-[#f8f8f8]"
+        className=" rounded-3xl flex gap-y-6 justify-evenly h-full flex-wrap w-full"
       >
         {/* This is the first container which includes fields like title,description,price,Inventory etc. */}
-        <div className="flex-col gap-6 flex max-w-2xl">
+        <div className="flex-col gap-6 flex w-full max-w-2xl">
           {/* This is the Genral Infomation Section which contains title and description,keyfeatures of the prodict .. */}
           <div className="input-section">
             <h3 className="title">General Information</h3>
