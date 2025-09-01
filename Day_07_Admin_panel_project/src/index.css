@@ -11,7 +11,7 @@ body{
 .dark{
     @apply bg-[#121212] text-white
 }
-.dark,.sidebar {
+.dark .sidebar {
     @apply bg-[#121212] text-white
 }
 
@@ -22,7 +22,7 @@ body{
 .light{
     @apply text-black bg-[#f0f0f0]
 }
-.default-theme,.sidebar{
+.default-theme .sidebar{
     @apply dark:bg-gray-900 dark:text-white text-black bg-[#f0f0f0]
 }
 

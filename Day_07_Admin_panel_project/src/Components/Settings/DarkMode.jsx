@@ -4,7 +4,7 @@ import { Sun, Moon, MonitorCog } from "lucide-react";
 
 const DarkMode = () => {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("themepreference") || "default-theme"
+    () => localStorage.getItem("themepreference") || "dark"
   );
   useEffect(() => {
     document.body.classList.remove("dark", "default-theme", "light");
