@@ -3,7 +3,7 @@ import CountUp from "react-countup";
 
 const OverviewCard = ({ number, title }) => {
   return (
-    <div className=" p-5 gap-3 shadow-md flex flex-col rounded-lg w-55 lg:w-xs">
+    <div className=" p-5 gap-3 transition duration-300 ease-in-out grow hover:shadow-md flex flex-col rounded-lg w-44 lg:w-xs">
       <div className="text-xl lg:text-3xl font-medium"><CountUp end={number}/></div>
       <div className="text-neutral-600">{title}</div>
     </div>
