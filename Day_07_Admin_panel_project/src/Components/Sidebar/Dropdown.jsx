@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import { ChevronUp } from "lucide-react";
+import { container,item } from "../../Utilities/Animations/ListStagger";
 
 const Dropdown = ({
   textSize,
@@ -38,11 +38,15 @@ const Dropdown = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <ul>
+            <motion.ul 
+  variants={container}
+            initial="hidden"
+            animate="show"
+            >
               {React.Children.map(children, (child, index) => (
-                <li key={index}>{child}</li>
+                <motion.li variants={item} key={index}>{child}</motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
         )}
       </AnimatePresence>

@@ -30,8 +30,8 @@ const Analytics = () => {
         <ResponsiveContainer width="100%" height="85%">
           <BarChart data={data} margin={{ bottom: 20, right: 20 }}>
             <CartesianGrid vertical={false} strokeDasharray="3 3" />
-            <Bar fill="#1c1c84" dataKey="InStore" />
-            <Bar fill="#AECCE4" dataKey="Sales" />
+            <Bar fill="#9F1239" dataKey="InStore" />
+            <Bar fill="#E3DAB7" dataKey="Sales" />
             <XAxis tick={{ dy: 15 }} dataKey="day" />
             <YAxis />
             <Legend

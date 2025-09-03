@@ -37,7 +37,7 @@ const Images = ({ imgs, thumbnails }) => {
         </div>
         <label
           htmlFor="images"
-          className=" bg-blue-400/30 rounded-2xl hover:border-blue-700 border border-blue-400 transition-all duration-300 ease-in-out px-7 py-5 block text-blue-500 cursor-pointer"
+          className=" bg-rose-400/30 rounded-2xl hover:border-rose-700 border-2 border-rose-400 transition-all duration-300 ease-in-out px-7 py-5 block text-white cursor-pointer"
         >
           Add images{" "}
         </label>
@@ -67,7 +67,7 @@ const Images = ({ imgs, thumbnails }) => {
         </div>
         <label
           htmlFor="thumbnails"
-          className=" bg-blue-400/30 rounded-2xl hover:border-blue-700 border border-blue-400 transition-all duration-300 ease-in-out px-7 py-5 block text-blue-500 cursor-pointer"
+          className=" bg-rose-400/30 rounded-2xl hover:border-rose-700 border-2 border-rose-400 transition-all duration-300 ease-in-out px-7 py-5 block text-white cursor-pointer"
         >
           Add Thumbnail{" "}
         </label>

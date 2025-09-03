@@ -1,11 +1,11 @@
 import React from "react";
 import CountUp from "react-countup";
 
-const OverviewCard = ({ number, title }) => {
+const OverviewCard = ({cash=false,icon, number, title }) => {
   return (
-    <div className=" p-5 gap-3 transition duration-300 ease-in-out grow hover:shadow-md flex flex-col rounded-lg w-44 lg:w-xs">
-      <div className="text-xl lg:text-3xl font-medium"><CountUp end={number}/></div>
-      <div className="text-neutral-600">{title}</div>
+    <div className=" primary-bg p-5 gap-3 transition  min-w-40 duration-300 ease-in-out grow hover:shadow-md flex flex-col rounded-lg w-fit">
+    <div className="flex w-full items-center gap-4 "><div className="w-fit p-3 text-rose-800 rounded-full bg-white">{icon}</div><div className="text-2xl lg:text-3xl font-medium">{cash && "$"}<CountUp end={number}/></div></div>
+      <div className="pl-16  font-medium text-xl">{title}</div>
     </div>
   );
 };

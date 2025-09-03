@@ -2,12 +2,14 @@ import React from "react";
 import {
   LineChart,
   Line,
+  Area,
   Legend,
   XAxis,
   YAxis,
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
+  AreaChart,
 } from "recharts";
 const data = [
   { day: "Mon", Sales: "19", InStore: "33" },
@@ -26,10 +28,9 @@ const SalesOverview = () => {
       {" "}
       <h2 className="text-2xl font-medium p-4 mb-3">Sales Overview</h2>
       <ResponsiveContainer width="100%" height="85%">
-        <LineChart margin={{ bottom: 20,right:20 }} data={data}>
+        <AreaChart margin={{ bottom: 20,right:20 }} data={data}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
-          <Line stroke="#1c1cf4" strokeWidth={3} dataKey="Sales" />
-          <Line stroke="#FFA500" strokeWidth={3} dataKey="InStore" />
+          <Area  stroke="#9F1239" fill="#9F1239" fillOpacity={0.3} strokeWidth={3} dataKey="Sales" />
 
           <XAxis dataKey="day" tick={{ dy: 15 }} />
           <YAxis />
@@ -40,7 +41,7 @@ const SalesOverview = () => {
             wrapperStyle={{ marginBottom: 30 }}
             height={36}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
     </div>

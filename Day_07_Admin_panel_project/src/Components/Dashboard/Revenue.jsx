@@ -34,9 +34,10 @@ const Revenue = () => {
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
             <Area
               dataKey="Revenue"
-              stroke="#3ab09e"
-              fill="#3ab09e"
-              type="monotone"
+              stroke="#9F1239"
+              fill="#9F1239"
+              fillOpacity={0.4}
+              // type="monotone"
             />
             <XAxis tick={{dy:15,dx:5}} dataKey="month" />
             <YAxis />

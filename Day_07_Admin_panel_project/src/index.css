@@ -3,35 +3,17 @@
 @source "../.flowbite-react/class-list.json";
 
 body{
-    background-color: #f0f0f0;
+    background-color: #181818;
+    color:white;
       font-family: 'Poppins', sans-serif;
 
 }
-
-
-.dark{
-    @apply bg-[#121212] text-white
-}
-.dark .sidebar {
-    @apply bg-[#121212] text-white
+.primary-bg{
+    @apply bg-rose-800 text-white
 }
 
-.default-theme {
-    @apply dark:bg-gray-900 dark:text-white text-black bg-[#f0f0f0]
-}
-
-.light{
-    @apply text-black bg-[#f0f0f0]
-}
-.default-theme .sidebar{
-    @apply dark:bg-gray-900 dark:text-white text-black bg-[#f0f0f0]
-}
-
-.light,.sidebar{
-    @apply text-black bg-[#f0f0f0]
-}
 .button-style{
-    @apply bg-blue-600 hover:shadow-lg px-4 py-3 md:px-6 md:py-3 h-full  rounded-2xl text-white  font-medium
+    @apply bg-rose-800   hover:shadow-lg px-4 py-3 md:px-6 md:py-3 h-full  rounded-2xl text-white  font-medium
 }
 .scrollbar-hidden{
     scrollbar-width: none;
@@ -60,5 +42,9 @@ label{
 }
 
 .chart-card-style {
-    @apply hover:shadow-lg min-w-[600px] transition duration-300 mt-10 h-[400px] w-full lg:h-[550px] 2xl:w-[760px] rounded-2xl lg:pb-3 pb-8 pr-3 lg:pr-10
+    @apply hover:shadow-lg min-w-[600px] transition duration-300 mt-10 h-[400px] w-full lg:h-[500px] 2xl:w-[760px] rounded-2xl lg:pb-3 pb-8 pr-3 lg:pr-10
+}
+
+.active-tabs{
+    @apply bg-rose-800/20 text-rose-700
 }
