@@ -26,7 +26,7 @@ const revenueData = [
 
 const Revenue = () => {
   return (
-    <div className="hover:shadow-lg transition duration-300 rounded-2xl overflow-x-auto overflow-y-hidden scrollbar-hidden">
+    <div className="blur-bg hover:shadow-lg transition duration-300 rounded-2xl overflow-x-auto overflow-y-hidden scrollbar-hidden">
       <h2 className="text-2xl font-medium p-4 mb-3">Revenue</h2>
       <div className="w-full min-w-[700px] h-[400px]  pb-4">
         <ResponsiveContainer width="100%" height="100%">

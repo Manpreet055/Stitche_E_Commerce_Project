@@ -10,9 +10,10 @@ const Dashboard = () => {
   return (
     <div className=" w-full lg:p-4 py-6 h-screen overflow-scroll scrollbar-hidden ">
       <h2 className="text-4xl font-medium mb-6">Dashboard</h2>
+      {/* This is the Overview Card Container which show KPI's information like Revenue ,Users etc. */}
       <div className="w-full flex gap-8 flex-wrap justify-between">
         <OverviewCard
-        cash={true}
+          cash={true}
           icon={<HandCoins />}
           number="23388"
           title="Total Revenue"
@@ -21,12 +22,14 @@ const Dashboard = () => {
         <OverviewCard icon={<Users />} number="1453" title="Active Users" />
         <OverviewCard icon={<Clock />} number="187" title="Pending Orders" />
       </div>
-      <div className="flex flex-wrap grow w-full justify-between">
+
+      {/* This container contains linechart and barchart */}
+      <div className="flex flex-wrap mt-7 grow w-full justify-between">
         <SalesOverview />
         <Analytics />
       </div>
       <Revenue />
-      <Orders/>
+      <Orders />
     </div>
   );
 };

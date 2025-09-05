@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const ProductDropdown = () => {
   return (
     <div className="w-full sidebar-links">
-      <Dropdown buttonName="Products" buttonIcon={<ShoppingBag />}>
+      <Dropdown fullWidth={true} buttonName="Products" buttonIcon={<ShoppingBag />}>
         <NavLink to="products" className={({ isActive }) => {
                         return `w-full flex sidebar-links    ${
                           isActive ? "active-tabs" : ""

@@ -23,10 +23,10 @@ const data = [
 
 const SalesOverview = () => {
   return (
-    <div className="overflow-x-auto scrollbar-hidden h-full w-full 2xl:w-[760px] rounded-2xl">
+    <div className="blur-bg overflow-x-auto scrollbar-hidden h-full w-full 2xl:w-[745px] rounded-2xl">
       <div className="chart-card-style ">
       {" "}
-      <h2 className="text-2xl font-medium p-4 mb-3">Sales Overview</h2>
+      <h2 className="text-3xl font-medium px-4 mb-3">Sales Overview</h2>
       <ResponsiveContainer width="100%" height="85%">
         <AreaChart margin={{ bottom: 20,right:20 }} data={data}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />

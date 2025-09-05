@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
+// using fake data to show analytics 
 const data = [
   { day: "Mon", Sales: "19", InStore: "33" },
   { day: "Tue", Sales: "28", InStore: "44" },
@@ -18,18 +19,25 @@ const data = [
   { day: "Sat", Sales: "35", InStore: "40" },
   { day: "Sun", Sales: "60", InStore: "63" },
 ];
+
+// This is the Bar chart we are using to show data
 const Analytics = () => {
   return (
-    <div className=" overflow-x-auto scrollbar-hidden w-full h-full 2xl:w-[760px] rounded-2xl">
+    <div className=" blur-bg overflow-x-auto scrollbar-hidden w-full h-full 2xl:w-[760px] rounded-2xl">
       <div
         className="
     chart-card-style 
     "
       >
-        <h2 className="text-2xl font-medium p-4 mb-3">Analytics</h2>
+        <h2 className=" text-3xl font-medium px-4 mb-3">Analytics</h2>
+
+        {/* Used Recharts's  built-in responsive container to build a responsive chart*/}
         <ResponsiveContainer width="100%" height="85%">
+          
+          {/* As we are creating bar chart so we used Barchart components of Recharts */}
           <BarChart data={data} margin={{ bottom: 20, right: 20 }}>
-            <CartesianGrid vertical={false} strokeDasharray="3 3" />
+            {/* Grids */}
+            <CartesianGrid vertical={false} strokeDasharray="3 3" /> 
             <Bar fill="#9F1239" dataKey="InStore" />
             <Bar fill="#E3DAB7" dataKey="Sales" />
             <XAxis tick={{ dy: 15 }} dataKey="day" />

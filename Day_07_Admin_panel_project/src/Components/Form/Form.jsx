@@ -41,7 +41,7 @@ const Form = () => {
   };
 
   return (
-    <div className="w-full flex-1 overflow-x-hidden">
+    <section className="w-full max-h-screen blur-bg flex-1 overflow-x-hidden">
       <h2 className="flex w-full py-8 justify-center text-3xl font-semibold">
         Add New Product
       </h2>
@@ -63,7 +63,7 @@ const Form = () => {
                 required: "Title is required",
                 minLength: { value: 4, message: "Minimum length should be 4" },
               })}
-              className={`${
+              className={`form-input-sections ${
                 errors.title
                   ? "border border-red-500 focus:outline-red-500"
                   : "border border-gray-300 focus:outline-gray-500"
@@ -86,7 +86,7 @@ const Form = () => {
               placeholder="Description"
               name="description"
               id="description"
-              className={`scrollbar-hidden h-[150px] resize-y ${
+              className={`form-input-sections scrollbar-hidden h-[150px] resize-y ${
                 errors.description
                   ? "border border-red-500 focus:outline-red-500"
                   : "border border-gray-300 focus:outline-gray-500"
@@ -122,7 +122,7 @@ const Form = () => {
                   message: "Maximum price will be 9999",
                 },
               })}
-              className={`${
+              className={`form-input-sections ${
                 errors.price
                   ? "border border-red-500 focus:outline-red-500"
                   : "border border-gray-300 focus:outline-gray-500"
@@ -144,7 +144,7 @@ const Form = () => {
                     valueAsNumber: "Please enter an number ",
                   })}
                   id="discount"
-                  className={`mt-2 ${
+                  className={`form-input-sections mt-2 ${
                     errors.discount
                       ? "border border-red-500 focus:outline-red-500"
                       : "border border-gray-300 focus:outline-gray-500"
@@ -158,7 +158,7 @@ const Form = () => {
                   Discount Type
                 </label>
                 <select
-                  className="text-gray-500"
+                  className=" form-input-sections text-gray-500"
                   id="discount-type"
                   {...register("discount-type", {
                     required: true,
@@ -195,7 +195,7 @@ const Form = () => {
                       message: "Barcode must be atleast 6 digits",
                     },
                   })}
-                  className={`${
+                  className={`form-input-sections ${
                     errors.barcode
                       ? "border border-red-500 focus:outline-red-500"
                       : "border border-gray-300 focus:outline-gray-500"
@@ -219,7 +219,7 @@ const Form = () => {
                     valueAsNumber: true,
                   })}
                   defaultValue="0"
-                  className={`${
+                  className={`form-input-sections ${
                     errors.quantity
                       ? "border border-red-500 focus:outline-red-500"
                       : "border border-gray-300 focus:outline-gray-500"
@@ -249,7 +249,7 @@ const Form = () => {
             <label htmlFor="category">Product Category</label>
             <select
               name="category"
-              className="text-gray-500"
+              className="form-input-sections text-gray-500"
               {...register("category", {
                 required: true,
               })}
@@ -275,19 +275,19 @@ const Form = () => {
             >
               Clear All
             </button>
-            <input
+            <button
               disabled={isSubmitting}
               onClick={resetFrom}
               className={`button-style scale-transition ${
                 isSubmitting && "opacity-50"
               }`}
               type="submit"
-              value={isSubmitting ? "Adding product " : "Add Product"}
-            />
+              
+            >{isSubmitting ? "Adding product " : "Add Product"}</button>
           </div>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 

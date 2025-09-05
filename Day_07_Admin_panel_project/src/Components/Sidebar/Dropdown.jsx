@@ -8,12 +8,16 @@ const Dropdown = ({
   children,
   buttonName = "Menu",
   buttonIcon = null,
+  abso = false,
+  buttonBg = null,
+  fullWidth = false,
+  listBg
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <section className="w-full max-w-xl h-full">
+    <section className={` ${fullWidth && "w-full"} max-w-xl h-fit`}>
       <button
-        className="flex  justify-between items-center w-full gap-2"
+        className={`flex  justify-between items-center w-full gap-2 ${buttonBg}`}
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <div className={`flex gap-2 items-center ${textSize}`}>
@@ -31,7 +35,7 @@ const Dropdown = ({
       <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
-            className="origin-top overflow-hidden p-4 transition-all duration-300 ease-in-out flex flex-col justify-evenly h-fit text-xl"
+            className={`origin-top overflow-hidden p-4 gap-6 transition-all duration-300 ${abso && "absolute"} ease-in-out flex flex-col justify-between text-xl ${listBg}`}
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -44,7 +48,7 @@ const Dropdown = ({
             animate="show"
             >
               {React.Children.map(children, (child, index) => (
-                <motion.li variants={item} key={index}>{child}</motion.li>
+                <motion.li className="w-full text-nowrap " variants={item} key={index}>{child}</motion.li>
               ))}
             </motion.ul>
           </motion.div>

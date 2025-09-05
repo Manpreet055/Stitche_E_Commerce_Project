@@ -7,6 +7,8 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Form from "./Components/Form/Form";
 import Products from "./Components/Products/Products";
 import Settings from "./Components/Settings/Settings";
+import Users  from "./Components/Users/Users";
+import Inbox from "./Components/Inbox/Inbox";
 let route = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +29,14 @@ let route = createBrowserRouter([
       {
         path:"settings",
         element:<Settings/>
+      },
+      {
+        path:"users",
+        element:<Users />
+      },
+      {
+        path:"inbox",
+        element:<Inbox />
       }
     ],
   },

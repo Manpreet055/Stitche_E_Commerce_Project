@@ -37,7 +37,7 @@ const KeyFeature = ({ onFeatureChange }) => {
         {keyFeatures.map((feature, index) => (
           <li className="w-full flex items-center gap-7" key={index}>
             <input
-              className="w-full pl-3"
+              className="w-full pl-3 form-input-sections"
               value={feature}
               placeholder="Key Feautre"
               onChange={(event) => handleChanges(index, event.target.value)}

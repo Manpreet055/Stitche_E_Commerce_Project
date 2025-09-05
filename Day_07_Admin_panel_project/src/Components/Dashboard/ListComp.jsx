@@ -9,6 +9,13 @@ const ListComp = ({
   amount,
   status,
 }) => {
+  const statusColor = {
+    pending:"bg-amber-400/50",
+    delivered:"bg-green-400/50",
+    shipped:"bg-blue-400/50",
+    cancelled:"bg-gray-400/50",
+    processing:"bg-indigo-400/50",
+  }
   return (
     <ul
       className={`h-[70px] grid grid-cols-6 place-items-center text-lg border-b border-neutral-600 ${
@@ -20,7 +27,11 @@ const ListComp = ({
       <li>{product}</li>
       <li>{date}</li>
       <li>{amount}</li>
-      <li>{status}</li>
+      <li
+        className={`px-4 py-2 rounded-2xl ${statusColor[status.toLowerCase()]}`}
+      >
+        {status}
+      </li>
     </ul>
   );
 };

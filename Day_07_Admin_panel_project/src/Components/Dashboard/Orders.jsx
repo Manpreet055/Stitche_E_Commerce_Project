@@ -7,7 +7,7 @@ import { container,item } from "../../Utilities/Animations/ListStagger.js";
 
 const Orders = () => {
   return (
-    <div className="w-full input-section my-5">
+    <div className="blur-bg w-full input-section my-5">
       <div className=" mb-2 text-3xl font-semibold w-full flex justify-between">
         <h2>Today's Orders</h2>
         <div className="text-lg flex items-center group hover:scale-[1.02] hover:text-neutral-300 transition duration-300 ease-in-out gap-2">

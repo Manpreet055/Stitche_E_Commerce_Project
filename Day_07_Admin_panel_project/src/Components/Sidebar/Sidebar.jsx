@@ -15,7 +15,7 @@ import {
 const Sidebar = () => {
   return (
     <div
-      className={`bg-[#181818] text-white sidebar backdrop-blur-2xl flex z-50   flex-col justify-between h-full w-72 max-w-[80vw] md:w-80 top-0 left-0  fixed`}
+      className={`bg-black/20 backdrop-blur-2xl flex z-50   flex-col justify-between h-full w-72 max-w-[80vw] md:w-80 top-0 left-0  fixed`}
     >
       <div>
         <div className="flex py-6 px-4 items-center gap-3 text-3xl font-medium">
@@ -78,7 +78,7 @@ const Sidebar = () => {
                   isActive ? "bg-rose-800/20 text-rose-600" : ""
                 }`;
               }}
-              to="/customers"
+              to="/users"
             >
               <Users />
               Users
