@@ -1,8 +1,8 @@
 import Reac, { useState, useRef } from "react";
-import { Search, ListFilter, ChevronUp } from "lucide-react";
+import { ListFilter, ChevronUp } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import clickEvent from "../../Utilities/Animations/onClick";
 import Filters from "./Filters";
+import SearchBar from "./SearchBar";
 
 const DataNavbar = () => {
   const [filters, showFilters] = useState(false);
@@ -21,23 +21,7 @@ const DataNavbar = () => {
 
   return (
     <nav className="w-full flex gap-10 py-3">
-      <div className="h-full w-fit flex items-center gap-2">
-        <input
-          type="text"
-          className="border border-gray-400 h-full rounded-3xl px-6"
-          placeholder="Search Name, Email etc.."
-        />
-        <motion.button
-          variants={clickEvent}
-          initial="default"
-          whileHover="hover"
-          whileTap="click"
-          className=" p-3 flex items-center gap-2 text-xl rounded-2xl"
-        >
-          <Search size={28} />
-          Search
-        </motion.button>
-      </div>
+      <SearchBar></SearchBar>
       <div className="flex items-center relative">
         <motion.button
           onHoverStart={handleHoverStart}

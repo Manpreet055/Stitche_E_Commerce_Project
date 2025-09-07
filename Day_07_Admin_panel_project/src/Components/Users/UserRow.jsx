@@ -1,22 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useState } from "react";
 import { motion } from "framer-motion";
 import { item, container } from "../../Utilities/Animations/ListStagger";
 
 const UserRow = ({
   serial,
-  userID,
-  name,
-  email,
-  status,
-  role,
-  orders,
-  lastLogin,
-  joindate,
-  isVerified,
-  city,
-  country,
-  phone,
+  user
 }) => {
+  const {Username,role,email,status,orders,phone,verified,dateJoined,lastLogin} = user
   const [fullDetails, showFullDetails] = useState(false);
   const statusColor = {
     active: "bg-green-500/40",
@@ -28,11 +18,10 @@ const UserRow = ({
       <motion.ul
         onClick={() => showFullDetails((prev) => !prev)}
         variants={item}
-        key={userID}
         className="w-full grid grid-cols-[60px_1fr_1fr_130px_120px_100px_150px] text-lg items-center justify-items-start h-[60px]"
       >
         <li>{serial}</li>
-        <li className="pl-14">{name}</li>
+        <li className="pl-14">{Username}</li>
         <li>{email}</li>
         <li
           className={`px-2 py-2 rounded ${
@@ -52,17 +41,17 @@ const UserRow = ({
           animate="show"
           className="w-full max-h-40 rounded-2xl flex-wrap flex flex-col gap-4 bg-gray-400/40 p-6 text-lg py-3 "
         >
-          <motion.li variants={item}>Username : {name}</motion.li>
+          <motion.li variants={item}>Username : {Username}</motion.li>
           <motion.li variants={item}>Email Address : {email}</motion.li>
           <motion.li variants={item}>Phone Number : {phone}</motion.li>
           <motion.li variants={item}>Status : {status}</motion.li>
           <motion.li variants={item}>Role : {role}</motion.li>
           <motion.li variants={item}>Total Orders : {orders}</motion.li>
-          <motion.li variants={item}>Joining Date : {joindate}</motion.li>
+          <motion.li variants={item}>Joining Date : {dateJoined}</motion.li>
           <motion.li variants={item}>Last Login : {lastLogin}</motion.li>
-          <motion.li variants={item}>Verified : {isVerified.toString()}</motion.li>
-          <motion.li variants={item}>City : {city}</motion.li>
-          <motion.li variants={item}>Country : {country}</motion.li>
+          <motion.li variants={item}>Verified : {verified.toString()}</motion.li>
+          <motion.li variants={item}>City : {user.address.city}</motion.li>
+          <motion.li variants={item}>Country : {user.address.country}</motion.li>
         </motion.ul>
       )}
     </div>
