@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import clickEvent from "../../Utilities/Animations/onClick";
-import UsersData from "./UsersData";
-import SearchContext from "../../Context/SeachContext";
+import UsersData from "../Layout/Users/UsersData";
+import SearchContext from "../../Context/searches/SeachContext";
 
 const Filters = () => {
   const { setSearchItems } = useContext(SearchContext);

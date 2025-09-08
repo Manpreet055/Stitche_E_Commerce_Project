@@ -1,11 +1,10 @@
 import React from "react";
 import SalesOverview from "./SalesOverview";
-import OverviewCard from "./OverviewCard";
+import OverviewCard from "../../../ui/OverviewCard";
 import Analytics from "./Analytics";
 import Revenue from "./Revenue";
 import { HandCoins, BookText, Users, Clock } from "lucide-react";
-import Orders from "./Orders";
-
+import Orders from "../../../ui/Orders";
 const Dashboard = () => {
   return (
     <div className=" w-full lg:p-4 py-6 h-screen overflow-scroll scrollbar-hidden ">

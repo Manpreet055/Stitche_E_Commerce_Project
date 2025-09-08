@@ -1,6 +1,6 @@
 import React, {useState } from "react";
 import { motion } from "framer-motion";
-import { item, container } from "../../Utilities/Animations/ListStagger";
+import { item, container } from "../Utilities/Animations/ListStagger";
 
 const UserRow = ({
   serial,

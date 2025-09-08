@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Filters from "./Filters";
 import SearchBar from "./SearchBar";
 
-const DataNavbar = () => {
+const SearchNavbar = () => {
   const [filters, showFilters] = useState(false);
   const timeref = useRef(null);
 
@@ -21,7 +21,7 @@ const DataNavbar = () => {
 
   return (
     <nav className="w-full flex gap-10 py-3">
-      <SearchBar></SearchBar>
+      <SearchBar ></SearchBar>
       <div className="flex items-center relative">
         <motion.button
           onHoverStart={handleHoverStart}
@@ -58,4 +58,4 @@ const DataNavbar = () => {
   );
 };
 
-export default DataNavbar;
+export default SearchNavbar;

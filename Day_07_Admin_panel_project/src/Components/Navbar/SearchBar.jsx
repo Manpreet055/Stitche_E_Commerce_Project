@@ -3,10 +3,13 @@ import clickEvent from "../../Utilities/Animations/onClick";
 import { Search } from "lucide-react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import UsersData from "./UsersData";
-import SearchContext from "../../Context/SeachContext";
+import UsersData from "../Layout/Users/UsersData";
+import SearchContext from "../../Context/searches/SeachContext";
+import SearchValueContext from "../../Context/searches/SearchValueContext";
+
 const SearchBar = () => {
   const { setSearchItems } = useContext(SearchContext);
+  const { searchValue } = useContext(SearchValueContext);
   const {
     register,
     handleSubmit,
@@ -30,8 +33,10 @@ const SearchBar = () => {
         user.status.toLowerCase().includes(searchterm)
       );
     });
-    searchResults.length != 0 && setSearchItems(searchResults);
-    reset();
+    searchResults.length != 0
+      ? setSearchItems(searchResults)
+      : setSearchItems("No results found");
+    searchValue && reset();
   };
 
   return (

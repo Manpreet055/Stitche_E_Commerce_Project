@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import Images from "./Images";
-import KeyFeature from "./keyFeature";
+import Images from "./HandleImages";
+import KeyFeature from "./AddKeyFeatures";
 import { useState } from "react";
 
-const Form = () => {
+const AddProduct = () => {
   // These States store all the keyfeatures,images and thumnails in the form of Array
   const [feature, setNewFeatures] = useState([]);
   const [images, setimages] = useState([]);
@@ -282,8 +282,9 @@ const Form = () => {
                 isSubmitting && "opacity-50"
               }`}
               type="submit"
-              
-            >{isSubmitting ? "Adding product " : "Add Product"}</button>
+            >
+              {isSubmitting ? "Adding product " : "Add Product"}
+            </button>
           </div>
         </div>
       </form>
@@ -291,4 +292,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default AddProduct;

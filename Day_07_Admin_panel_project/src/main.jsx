@@ -3,12 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./Components/Dashboard/Dashboard";
-import Form from "./Components/Form/Form";
-import Products from "./Components/Products/Products";
-import Settings from "./Components/Settings/Settings";
-import Users  from "./Components/Users/Users";
-import Inbox from "./Components/Inbox/Inbox";
+import Dashboard from "./Components/Layout/Dashboard/Dashboard";
+import Products from "./Components/Layout/Products/Products";
+import Settings from "./Components/Layout/Settings/Settings";
+import Users  from "./Components/Layout/Users/Users";
+import Inbox from "./Components/Layout/Inbox/Inbox";
+import AddProduct from "./Components/Layout/AddProduct/AddProduct";
 let route = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +24,7 @@ let route = createBrowserRouter([
       },
       {
         path: "product/add",
-        element: <Form />,
+        element: <AddProduct />,
       },
       {
         path:"settings",
