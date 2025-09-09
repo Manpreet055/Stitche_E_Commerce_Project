@@ -37,9 +37,9 @@ const MainMenu = () => {
         {isSidebarOpen && (
           <motion.div
           ref={menuRef}
-            initial={{ x: -320, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -320, opacity: 0 }}
+            initial={{ x: -320}}
+            animate={{ x: 0}}
+            exit={{ x: -320}}
             transition={{ duration: 0.3 }}
             className={`block sidebar fixed left-0 top-0 h-full z-50 w-fit lg:hidden`}
           >

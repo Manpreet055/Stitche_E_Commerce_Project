@@ -8,13 +8,14 @@ import SearchContext from "../../Context/searches/SeachContext";
 import SearchValueContext from "../../Context/searches/SearchValueContext";
 
 const SearchBar = () => {
+  const [showErr,setShowErr] = useState(false);
   const { setSearchItems } = useContext(SearchContext);
   const { searchValue } = useContext(SearchValueContext);
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, touchedFields },
+    formState: { errors,isSubmitted },
   } = useForm();
 
   const searchData = (data) => {
@@ -36,7 +37,8 @@ const SearchBar = () => {
     searchResults.length != 0
       ? setSearchItems(searchResults)
       : setSearchItems("No results found");
-    searchValue && reset();
+
+    searchValue == "" && reset();
   };
 
   return (
@@ -46,6 +48,8 @@ const SearchBar = () => {
     >
       <div className="relative h-full flex flex-col gap-2">
         <input
+        onFocus={()=>setShowErr(true)}
+        onBlur={()=>setShowErr(false)}
           {...register("searches", {
             required: "Search field cannot be empty",
             minLength: { value: 4, message: "Minimum 4 letters required " },
@@ -56,11 +60,11 @@ const SearchBar = () => {
           } h-full  px-6 focus:border-none`}
           placeholder="Search Name, Email etc.."
         />
-        {errors.searches && touchedFields.searches && (
+        {errors.searches && showErr?(
           <p className=" absolute top-14 left-2 l text-lg text-red-600">
             *{errors.searches.message}
           </p>
-        )}
+        ):""}
       </div>
       <motion.button
         type="submit"

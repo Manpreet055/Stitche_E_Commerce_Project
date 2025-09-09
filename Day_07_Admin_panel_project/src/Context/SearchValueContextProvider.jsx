@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SearchValueContext from './searches/SearchValueContext'
 
 const SearchValueContextProvider = ({children}) => {
-    const [searchValue,setSearchValue] = useState(false)
+    const [searchValue,setSearchValue] = useState(null)
   return (
     <SearchValueContext.Provider value={{searchValue,setSearchValue}}>
         {children}

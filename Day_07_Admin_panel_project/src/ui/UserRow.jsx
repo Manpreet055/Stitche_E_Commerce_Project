@@ -21,10 +21,10 @@ const UserRow = ({
         className="w-full grid grid-cols-[60px_1fr_1fr_130px_120px_100px_150px] text-lg items-center justify-items-start h-[60px]"
       >
         <li>{serial}</li>
-        <li className="pl-14">{Username}</li>
-        <li>{email}</li>
+        <li className="lg:pl-14 max-w-[90px] md:max-w-max scrollbar-hidden overflow-x-scroll">{Username}</li>
+        <li className="overflow-x-scroll max-w-[120px] md:max-w-max scrollbar-hidden">{email}</li>
         <li
-          className={`px-2 py-2 rounded ${
+          className={`px-2 py-2  rounded ${
             statusColor[status].toLowerCase() || "bg-gray-400"
           }`}
         >
